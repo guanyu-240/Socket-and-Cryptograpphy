@@ -1,0 +1,47 @@
+Program Description:
+An command line instant messaging system using self-designed protocol.
+Please refer to design document for details of the protocol.
+Rebuild the project requires importing the whole project into Eclipse.
+Participant: Guanyu Wang, Xiaoyuan Liu
+
+User credentials:
+username: guanyuwang            password: !@Gyw#$
+username: xiaoyuanliu           password: !@Xyl#$
+username: garrett               password: !@Gar#$
+username: jasonmoon             password: !@jas#$
+username: CS6740                password: !@CS#$
+
+Installation guide:
+(1) Extract CS7640_Final.zip
+(2) Make sure that the following directories are under the same directory with client.jar:
+    'Properties' 
+    'PublicKey' 
+(3) Make sure that the following directories are under the same directory with server.jar
+    'Properties'
+    'PrivateKey'
+    'UserDB'
+(4) Change the server IP address in Properties/client_config.properties: replace 127.0.0.1 with
+    IP address of the workstation where server is installed. 
+(5) If port any of 10100 and 15100 is filled, replace the unavailable port with other ports. 
+    For example, if 10100 is unavailable but 10200 is available, set TCPPort = 10100 in 
+    server_config.properties and set ServerTCPPort = 10100 in client_config.properties
+
+    
+Execution guide:
+Server:
+Command for executing server:
+    java -jar server.jar
+Exit:
+    press 'Ctrl + C' to end the server
+    
+Client:
+Command for executing client:
+    java -jar client.jar
+Exit:
+    input 'logout' and then press 'Enter' or directly press 'Ctrl + C'
+Commands inside the system:
+Send message to a specified user: send <user ID> <message>
+Request list of online users: list
+
+  
+    

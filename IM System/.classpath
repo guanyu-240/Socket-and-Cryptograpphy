@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/Users/Peipei/Dropbox/CS6740_Final/CS6740_Final_Team2_Guanyu_Xiaoyuan/CS6740_Final_Project/client(openjdk_1.6).jar"/>
+	<classpathentry kind="lib" path="/Users/Peipei/Dropbox/CS6740_Final/CS6740_Final_Team2_Guanyu_Xiaoyuan/CS6740_Final_Project/client(openjdk_1.7).jar"/>
+	<classpathentry kind="lib" path="/Users/Peipei/Dropbox/CS6740_Final/CS6740_Final_Team2_Guanyu_Xiaoyuan/CS6740_Final_Project/server(openjdk_1.6).jar"/>
+	<classpathentry kind="lib" path="/Users/Peipei/Dropbox/CS6740_Final/CS6740_Final_Team2_Guanyu_Xiaoyuan/CS6740_Final_Project/server(openjdk_1.7).jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
