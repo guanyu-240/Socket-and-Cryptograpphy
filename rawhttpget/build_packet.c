@@ -1,5 +1,7 @@
 #include "rawhttpget.h"
-
+/*
+ Initialize pseudo header
+ */
 void ini_ph_send(char *pseudogram, size_t data_len, char *src_ip, char *dst_ip){
     pseudo_header *ph_send = (pseudo_header *)pseudogram;
     ph_send->src_addr = inet_addr(src_ip);
@@ -9,6 +11,9 @@ void ini_ph_send(char *pseudogram, size_t data_len, char *src_ip, char *dst_ip){
     ph_send->tcp_len = htons(TCP_HDR_SIZE + data_len);
 }
 
+/*
+ Fill in the ip header
+ */
 void fill_ip_hdr(char *buf, char *src_ip, char *dst_ip, size_t data_len){
     struct iphdr *iph = (struct iphdr *) buf;
     iph->ihl = 5;
@@ -25,6 +30,9 @@ void fill_ip_hdr(char *buf, char *src_ip, char *dst_ip, size_t data_len){
     iph->check = checksum((unsigned short *)buf, IP_HDR_SIZE + TCP_HDR_SIZE + data_len);
 }
 
+/*
+ Construct the SYN packet
+ */
 size_t build_syn_packet(char *buf, size_t len, char *src_ip, char *dst_ip, int recv_port, int seq_num){
     memset(buf, 0, len);
     fill_ip_hdr(buf, src_ip, dst_ip, 0);
@@ -53,6 +61,9 @@ size_t build_syn_packet(char *buf, size_t len, char *src_ip, char *dst_ip, int r
     return IP_HDR_SIZE + TCP_HDR_SIZE;
 }
 
+/*
+ * Construct FIN packet
+ */
 size_t build_fin_packet(char *buf, size_t len, char *src_ip, char *dst_ip, int recv_port, int seq_num, int ack_num){
     memset(buf, 0, len);
     fill_ip_hdr(buf, src_ip, dst_ip, 0);
@@ -81,6 +92,9 @@ size_t build_fin_packet(char *buf, size_t len, char *src_ip, char *dst_ip, int r
     return IP_HDR_SIZE + TCP_HDR_SIZE;
 }
 
+/*
+ Construct ACL packet
+ */
 size_t build_ack(char *ack_buf, char *recv_buf, int recv_port, char *src_ip, char *dst_ip, int seq_num){
     memset(ack_buf, 0, IP_HDR_SIZE + TCP_HDR_SIZE);
     fill_ip_hdr(ack_buf, src_ip, dst_ip, 0);
@@ -117,6 +131,9 @@ size_t build_ack(char *ack_buf, char *recv_buf, int recv_port, char *src_ip, cha
     return IP_HDR_SIZE + TCP_HDR_SIZE;    
 }
 
+/*
+ Construct HTTP request packet
+ */
 size_t build_http_req(char *buf, char *recv_buf, size_t len, char *src_ip, char *dst_ip, int recv_port, char *path, int seq_num){
     memset(buf, 0, len);
     char *req_ptr = buf + IP_HDR_SIZE + TCP_HDR_SIZE;
